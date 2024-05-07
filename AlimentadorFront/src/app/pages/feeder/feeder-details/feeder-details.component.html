@@ -1,0 +1,10 @@
+<div *ngIf="feeder; else loading">
+  <h1>Feeder Details</h1>
+  <p><strong>Name:</strong> {{ feeder.name }}</p>
+  <p><strong>Weight:</strong> {{ feeder.weight }} Kg</p>
+  <p><strong>Address:</strong> {{ feeder.address }}</p>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

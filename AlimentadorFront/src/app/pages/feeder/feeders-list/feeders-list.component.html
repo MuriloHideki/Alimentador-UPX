@@ -1,0 +1,22 @@
+<div>
+  <h1>Feeders List</h1>
+
+  <div class="container">
+    <div class="card" *ngFor="let feeder of feeders">
+      <img src="../../../../assets/images/feeder.png" alt="feeder icon" class="feederImage">
+      <div class="containerIcon">
+        <img *ngIf="feeder.type === 'Dog'" src="../../../../assets/images/dog.png" alt="dog icon" class="dogIcon">
+        <img *ngIf="feeder.type === 'Cat'" src="../../../../assets/images/cat.png" alt="cat icon" class="catIcon">
+      </div>
+      <p><strong>{{feeder.name}}</strong><br>
+      <strong>Weight:</strong> {{feeder.weight}}Kg<br>
+      <strong>Address:</strong> {{feeder.address}}</p>
+
+
+      <!--Alterar o button de details para um edit-->
+      <button (click)="detail(feeder._id)">Details</button>
+      <button (click)="delete(feeder._id)">Delete</button>
+    </div>
+  </div>
+
+</div>

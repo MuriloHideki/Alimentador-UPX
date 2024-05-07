@@ -1,0 +1,38 @@
+h1 {
+  text-align: center;
+}
+
+.container{
+  display: flex;
+}
+
+.card{
+  position: relative;
+  width: 20%;
+  height: 25%;
+  margin: 10px 10px 10px 10px;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.feederImage
+{
+  width: 100%;
+  height: max-content;
+}
+
+.containerIcon
+{
+  position: absolute;
+  top: -32px;
+  right: -206px;
+}
+
+.dogIcon, .catIcon{
+  width: 30%;
+}
