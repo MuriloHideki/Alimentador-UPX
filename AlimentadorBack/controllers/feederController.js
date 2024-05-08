@@ -2,9 +2,9 @@ const Feeder = require('../models/feederModel');
 
 exports.createFeeder = async (req, res) => {
     try {
-        const { name, weight, type, address } = req.body;
+        const { name, weight, type, details, address } = req.body;
         const lastUpdateDate = new Date();
-        const feeder = await Feeder.create({ name, weight, type,address, lastUpdateDate });
+        const feeder = await Feeder.create({ name, weight, type, address, details, lastUpdateDate });
         res.status(201).json({ status: 'success', data: { feeder } });
     } catch (err) {
         res.status(400).json({ status: 'fail', message: err.message });
@@ -26,7 +26,7 @@ exports.getFeederById = async (req, res) => {
         if (!feeder) {
             return res.status(404).json({ status: 'fail', message: 'Feeder not found' });
         }
-        res.status(200).json({ status: 'success', data: { feeder } });
+        res.status(200).json({ status: 'success', data:  feeder  });
     } catch (err) {
         res.status(400).json({ status: 'fail', message: err.message });
     }

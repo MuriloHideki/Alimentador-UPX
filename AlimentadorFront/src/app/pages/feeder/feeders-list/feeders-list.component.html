@@ -12,10 +12,11 @@
       <strong>Weight:</strong> {{feeder.weight}}Kg<br>
       <strong>Address:</strong> {{feeder.address}}</p>
 
-
-      <!--Alterar o button de details para um edit-->
-      <button (click)="detail(feeder._id)">Details</button>
-      <button (click)="delete(feeder._id)">Delete</button>
+      <div class="btnSection">
+        <app-confirmation-dialog #confirmDialog (onConfirm)="handleDeleteConfirmation($event)"></app-confirmation-dialog>
+        <button (click)="detail(feeder._id)">Details</button>
+        <button (click)="openDeleteConfirm(feeder._id)">Delete</button>
+      </div>
     </div>
   </div>
 

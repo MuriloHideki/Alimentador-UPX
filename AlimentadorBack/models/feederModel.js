@@ -17,6 +17,10 @@ const feederSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    details: {
+        type:String,
+        required: true
+    },
     lastUpdateDate: {
         type: Date,
         required: true

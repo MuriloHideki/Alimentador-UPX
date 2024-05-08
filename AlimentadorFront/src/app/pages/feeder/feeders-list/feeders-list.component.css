@@ -8,8 +8,8 @@ h1 {
 
 .card{
   position: relative;
-  width: 20%;
-  height: 25%;
+  width: 10%;
+  height: 12.50%;
   margin: 10px 10px 10px 10px;
   border: 2px solid black;
   border-radius: 16px;
@@ -29,10 +29,15 @@ h1 {
 .containerIcon
 {
   position: absolute;
-  top: -32px;
-  right: -206px;
+  top: -6%;
+  right: -35%;
+  width: 100%;
 }
 
 .dogIcon, .catIcon{
-  width: 30%;
+  width: 50%;
+}
+
+.btnSection button {
+  width: 100%;
 }

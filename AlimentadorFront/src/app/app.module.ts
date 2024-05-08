@@ -7,13 +7,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { FeedersListComponent } from './pages/feeder/feeders-list/feeders-list.component';
 import { FeederDetailsComponent } from './pages/feeder/feeder-details/feeder-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationDialogComponent } from './pages/aux/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FeedersListComponent,
-    FeederDetailsComponent
+    FeederDetailsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

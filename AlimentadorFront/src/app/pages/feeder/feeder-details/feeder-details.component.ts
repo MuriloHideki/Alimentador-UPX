@@ -9,7 +9,7 @@ import { FeederService } from 'src/app/services/feeder.service';
   styleUrls: ['./feeder-details.component.css']
 })
 export class FeederDetailsComponent {
-  feeder: Feeder | undefined;
+  feeder!: Feeder;
 
   constructor(private route: ActivatedRoute, private feederService: FeederService) { }
 
@@ -27,5 +27,9 @@ export class FeederDetailsComponent {
     } else {
       console.error('ID do feeder não fornecido');
     }
+  }
+
+  update(id:string){
+    console.log(id);
   }
 }

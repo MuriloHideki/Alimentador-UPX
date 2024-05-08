@@ -7,11 +7,12 @@ export class Feeder {
   details: string = '';
   lastUpdateDate: Date;
 
-  constructor(_id: string, name: string, weight: number, type: string, lastUpdateDate: Date,){
+  constructor(_id: string, name: string, weight: number, type: string, details: string, lastUpdateDate: Date,){
     this._id = _id;
     this.name = name;
     this.weight = weight;
     this.type = type;
+    this.details = details;
     this.lastUpdateDate = lastUpdateDate;
     }
 }

@@ -1,8 +1,16 @@
 <div *ngIf="feeder; else loading">
   <h1>Feeder Details</h1>
-  <p><strong>Name:</strong> {{ feeder.name }}</p>
-  <p><strong>Weight:</strong> {{ feeder.weight }} Kg</p>
-  <p><strong>Address:</strong> {{ feeder.address }}</p>
+  <div>
+    <p><strong>Name:</strong> {{ feeder.name }}</p>
+    <p><strong>Weight:</strong> {{ feeder.weight }} Kg</p>
+    <p><strong>Address:</strong> {{ feeder.address }}</p>
+    <p><strong>Details:</strong> {{ feeder.details }}</p>
+    <p><strong>Last Update:</strong> {{ feeder.lastUpdateDate | date:'fullDate'}}</p>
+  </div>
+
+  <div>
+    <button (click)="update(feeder._id)">Update</button>
+  </div>
 </div>
 
 <ng-template #loading>
