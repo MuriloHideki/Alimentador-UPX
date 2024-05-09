@@ -5,7 +5,11 @@ const feederSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    weight: {
+    bowl: {
+        type: Number,
+        required: true
+    },
+    stock: {
         type: Number,
         required: true
     },

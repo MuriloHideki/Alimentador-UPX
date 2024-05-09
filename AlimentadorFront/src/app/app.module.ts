@@ -8,6 +8,8 @@ import { FeedersListComponent } from './pages/feeder/feeders-list/feeders-list.c
 import { FeederDetailsComponent } from './pages/feeder/feeder-details/feeder-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationDialogComponent } from './pages/aux/confirmation-dialog/confirmation-dialog.component';
+import { FormatKgPipe } from './pipe/format-kg.pipe';
+import { NavbarComponent } from './pages/aux/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ConfirmationDialogComponent } from './pages/aux/confirmation-dialog/con
     HomeComponent,
     FeedersListComponent,
     FeederDetailsComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FormatKgPipe,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,11 @@ import { ConfirmationDialogComponent } from '../../aux/confirmation-dialog/confi
   styleUrls: ['./feeders-list.component.css']
 })
 export class FeedersListComponent implements OnInit {
-  feeders: Feeder[] = [];
-  currentFeederId: string | undefined;
+  constructor(private feederService: FeederService, private router: Router) { }
   @ViewChild('confirmDialog') confirmDialog!: ConfirmationDialogComponent;
 
-  constructor(private feederService: FeederService, private router: Router) { }
+  feeders: Feeder[] = [];
+  currentFeederId: string | undefined;
 
   ngOnInit(): void {
     this.feederService.getAllFeeders().subscribe(response =>{

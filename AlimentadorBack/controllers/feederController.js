@@ -2,9 +2,9 @@ const Feeder = require('../models/feederModel');
 
 exports.createFeeder = async (req, res) => {
     try {
-        const { name, weight, type, details, address } = req.body;
+        const { name, bowl, stock, type, details, address } = req.body;
         const lastUpdateDate = new Date();
-        const feeder = await Feeder.create({ name, weight, type, address, details, lastUpdateDate });
+        const feeder = await Feeder.create({ name, bowl, stock, type, address, details, lastUpdateDate });
         res.status(201).json({ status: 'success', data: { feeder } });
     } catch (err) {
         res.status(400).json({ status: 'fail', message: err.message });
