@@ -32,6 +32,16 @@ export class FeederService {
     );
   }
 
+  createFeeder(feeder: Feeder): Observable<FeederResponse<void>> {
+    return this.http.post<FeederResponse<void>>(this.baseUrl, feeder)
+      .pipe(
+        catchError(error => {
+          console.error('Ocorreu um erro:', error);
+          throw error;
+        })
+      );
+  }
+
   updateFeeder(id: string, feeder: Feeder): Observable<FeederResponse<void>> {
     return this.http.put<FeederResponse<void>>(this.baseUrl+'/'+id, feeder)
       .pipe(

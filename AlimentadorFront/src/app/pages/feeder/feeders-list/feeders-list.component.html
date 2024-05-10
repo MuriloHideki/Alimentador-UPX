@@ -18,6 +18,10 @@
         <button (click)="openDeleteConfirm(feeder._id)">Deletar</button>
       </div>
     </div>
+    <div class="card add" (click)="openModal()">
+      <img src="../../../../assets/images/add.png" alt="AddIcon" class="addIcon">
+    </div>
+    <app-feeder-form *ngIf="isOpen"></app-feeder-form>
   </div>
 
 </div>

@@ -3,6 +3,8 @@ import { FeederService } from './../../../services/feeder.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationDialogComponent } from '../../aux/confirmation-dialog/confirmation-dialog.component';
+import { ModalService } from 'src/app/services/modal.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-feeders-list',
@@ -10,7 +12,11 @@ import { ConfirmationDialogComponent } from '../../aux/confirmation-dialog/confi
   styleUrls: ['./feeders-list.component.css']
 })
 export class FeedersListComponent implements OnInit {
-  constructor(private feederService: FeederService, private router: Router) { }
+  constructor(
+    private feederService: FeederService,
+    private router: Router,
+    private modalService: ModalService
+  ) { }
   @ViewChild('confirmDialog') confirmDialog!: ConfirmationDialogComponent;
 
   feeders: Feeder[] = [];
@@ -36,6 +42,7 @@ export class FeedersListComponent implements OnInit {
       this.delete(this.currentFeederId);
     }
   }
+
   delete(id:string){
     this.feederService.deleteFeeder(id).subscribe({
       next: () => {
@@ -45,5 +52,17 @@ export class FeedersListComponent implements OnInit {
         console.log('Error deleting feeder:', err);
       }
     });
+  }
+
+  isOpen = false;
+  isOpenSubscription: Subscription = this.modalService.isOpen.subscribe(state => {
+    this.isOpen = state;
+  });
+  openModal() {
+    this.modalService.openModal();
+  }
+
+  closeModal() {
+    this.modalService.closeModal();
   }
 }

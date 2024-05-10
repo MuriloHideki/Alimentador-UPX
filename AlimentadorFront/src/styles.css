@@ -6,6 +6,8 @@
     --buttonBackground: #E38F62;
     --buttonText: #EFE2DF;
 
+    --buttonHover2: #ffe1c1;
+
     --text: #8B5B42;
   }
 
@@ -21,9 +23,11 @@
     color: var(--buttonText);
     background-color: var(--buttonBackground);
     cursor: pointer;
+    transition: 0.2s;
   }
 
   button:hover {
     background-color: #F3A77E;
     color: #FFFFFF;
+    transition: 0.2s;
   }
