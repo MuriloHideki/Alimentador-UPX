@@ -12,4 +12,7 @@ router.route('/feeders/:id')
     .put(feederController.updateFeeder)
     .delete(feederController.deleteFeeder);
 
+router.route('/feeders/:id/bowl-and-stock')
+    .put(feederController.updateBowlAndStockFeeder);
+
 module.exports = router;
