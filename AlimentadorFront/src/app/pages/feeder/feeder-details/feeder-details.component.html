@@ -1,7 +1,8 @@
-<div *ngIf="feeder; else loading">
-  <h1>{{ feeder.name }}</h1>
-  <div>
-    <p><strong>Informações</strong></p>
+<div *ngIf="feeder; else loading" class="feeder-details">
+  <button class="back-button" (click)="goBack()">Voltar</button>
+  <h1 class="feeder-name">{{ feeder.name }}</h1>
+  <div class="feeder-info">
+    <h3>Informações</h3>
     <p><strong>Tigela:</strong> {{ feeder.bowl }}g</p>
     <p><strong>Estoque:</strong> {{ feeder.stock | formatKg }}Kg</p>
     <p><strong>Endereço:</strong> {{ feeder.address }}</p>
@@ -9,8 +10,35 @@
     <p><strong>Última atualização:</strong> {{ feeder.lastUpdateDate | date:'fullDate'}}</p>
   </div>
 
-  <div>
-    <button (click)="update(feeder._id)">Atualizar</button>
+  <!--
+    <div>
+      <button (click)="update(feeder._id)">Atualizar</button>
+    </div>
+  -->
+
+  <div class="history-container">
+    <h2>Histórico do Alimentador</h2>
+    <div *ngIf="histories.length > 0; else noHistory">
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Data da Atualização</th>
+          <th>Stock</th>
+          <th>Bowl</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let history of histories">
+          <td>{{ history.updateDate | date:'short' }}</td>
+          <td>{{ history.stock |formatKg}}Kg</td>
+          <td>{{ history.bowl }}g</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noHistory>
+    <p class="no-history">Não há histórico disponível para este alimentador.</p>
+  </ng-template>
   </div>
 </div>
 

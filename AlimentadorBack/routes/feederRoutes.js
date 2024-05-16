@@ -15,4 +15,7 @@ router.route('/feeders/:id')
 router.route('/feeders/:id/bowl-and-stock')
     .put(feederController.updateBowlAndStockFeeder);
 
+router.route('/feeders/:id/history')
+    .get(feederController.getHistoryByFeederId);
+
 module.exports = router;
