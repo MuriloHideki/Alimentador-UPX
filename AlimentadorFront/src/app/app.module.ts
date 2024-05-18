@@ -12,6 +12,7 @@ import { ConfirmationDialogComponent } from './pages/aux/confirmation-dialog/con
 import { FormatKgPipe } from './pipe/format-kg.pipe';
 import { NavbarComponent } from './pages/aux/navbar/navbar.component';
 import { FeederFormComponent } from './pages/feeder/feeder-form/feeder-form.component';
+import { AboutUsComponent } from './pages/aux/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FeederFormComponent } from './pages/feeder/feeder-form/feeder-form.comp
     ConfirmationDialogComponent,
     FormatKgPipe,
     NavbarComponent,
-    FeederFormComponent
+    FeederFormComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
