@@ -5,7 +5,9 @@
     <h3>Informações</h3>
     <p><strong>Tigela:</strong> {{ feeder.bowl }}g</p>
     <p><strong>Estoque:</strong> {{ feeder.stock | formatKg }}Kg</p>
-    <p><strong>Endereço:</strong> {{ feeder.address }}</p>
+    <p><strong>Cidade:</strong> {{ feeder.address.city }} - {{feeder.address.state}}</p>
+    <p><strong>Endereço:</strong> {{ feeder.address.street }}, {{feeder.address.number}}</p>
+    <p><strong>Bairro:</strong> {{feeder.address.neighborhood}} </p>
     <p><strong>Detalhes:</strong> {{ feeder.details }}</p>
     <p><strong>Última atualização:</strong> {{ feeder.lastUpdateDate | date:'fullDate'}}</p>
   </div>

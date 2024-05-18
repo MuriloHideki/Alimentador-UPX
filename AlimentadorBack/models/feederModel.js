@@ -1,5 +1,32 @@
 const mongoose = require('mongoose');
 
+const addressSchema = new mongoose.Schema({
+    cep: {
+        type: String,
+        required: true
+    },
+    street: {
+        type: String,
+        required: true
+    },
+    neighborhood: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    number: {
+        type: String,
+        required: true
+    }
+});
+
 const feederSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -14,15 +41,15 @@ const feederSchema = new mongoose.Schema({
         required: true
     },
     type: {
-        type:String,
+        type: String,
         required: true
     },
     address: {
-        type:String,
+        type: addressSchema,
         required: true
     },
     details: {
-        type:String,
+        type: String,
         required: true
     },
     lastUpdateDate: {

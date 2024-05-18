@@ -9,8 +9,8 @@
         <img *ngIf="feeder.type === 'Cat'" src="../../../../assets/images/cat.png" alt="cat icon" class="catIcon">
       </div>
       <p><strong>{{feeder.name}}</strong><br>
-      <strong>Estoque:</strong> {{feeder.stock | formatKg}}Kg<br>
-      <strong>Endereço:</strong> {{feeder.address}}</p>
+        <strong>Pote:</strong> {{feeder.bowl}}g<br>
+        <strong>Estoque:</strong> {{feeder.stock | formatKg}}Kg</p>
 
       <div class="btnSection">
         <app-confirmation-dialog #confirmDialog (onConfirm)="handleDeleteConfirmation($event)"></app-confirmation-dialog>

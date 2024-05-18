@@ -3,15 +3,51 @@ const History = require('../models/historyModel');
 
 exports.createFeeder = async (req, res) => {
     try {
-        const { name, bowl, stock, type, details, address } = req.body;
+        const {
+            name,
+            bowl,
+            stock,
+            type,
+            details,
+        } = req.body;
+
+        const address = {
+            cep,
+            street,
+            neighborhood,
+            city,
+            state,
+            number
+        } = req.body.address;
+
         const lastUpdateDate = new Date();
-        const feeder = await Feeder.create({ name, bowl, stock, type, address, details, lastUpdateDate });
-        
-        await History.create({ feederId: feeder._id, updateDate: lastUpdateDate, stock, bowl });
-        
-        res.status(201).json({ status: 'success', data: { feeder } });
+
+        const feeder = await Feeder.create({
+            name,
+            bowl,
+            stock,
+            type,
+            address,
+            details,
+            lastUpdateDate
+        });
+
+        await History.create({
+            feederId: feeder._id,
+            updateDate: lastUpdateDate,
+            stock,
+            bowl
+        });
+
+        res.status(201).json({
+            status: 'success',
+            data: { feeder }
+        });
     } catch (err) {
-        res.status(400).json({ status: 'fail', message: err.message });
+        res.status(400).json({
+            status: 'fail',
+            message: err.message
+        });
     }
 };
 

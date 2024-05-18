@@ -25,7 +25,8 @@ export class FeederDetailsComponent {
     const id = this.route.snapshot.paramMap.get('id') || '';
     if (id) {
       this.feederService.getById(id).subscribe({
-        next: (response) => {
+        next: (response) => {console.log(response);
+
           this.feeder = response.data;
           this.loadHistory(id);
         },
