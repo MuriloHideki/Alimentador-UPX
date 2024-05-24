@@ -23,16 +23,16 @@ cd Alimentador-UPX
 
 # Front-end
 
-```bash
 Copiar código
+```bash
 cd AlimentadorFront
 npm install
 ```
 
 # Back-end
 
-```bash
 Copiar código
+```bash
 cd AlimentadorBack
 npm install
 ```
@@ -48,7 +48,7 @@ Inicialize o banco de dados do MongoDB no caminho mongodb://localhost:27017.
 ```bash
 Copiar código
 cd AlimentadorBack
-npm start
+node app.js
 ```
 
 # Para iniciar o front-end:
