@@ -36,3 +36,26 @@ Copiar código
 cd AlimentadorBack
 npm install
 ```
+
+## Executando o Projeto
+
+# Antes de inicializar o servidor back-end:
+
+Inicialize o banco de dados do MongoDB no caminho mongodb://localhost:27017.
+
+# Para iniciar o servidor back-end:
+
+```bash
+Copiar código
+cd AlimentadorBack
+npm start
+```
+
+# Para iniciar o front-end:
+
+```bash
+Copiar código
+cd AlimentadorFront
+ng serve
+```
+Acesse http://localhost:4200 no navegador para ver a aplicação.
