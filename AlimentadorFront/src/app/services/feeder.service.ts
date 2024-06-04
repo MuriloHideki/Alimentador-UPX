@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Feeder } from '../classes/feeder';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { FeederResponse } from '../classes/feeder-response';
 import { FeederData } from '../classes/feeder-data';
 
@@ -28,6 +28,37 @@ export class FeederService {
       catchError(error => {
         console.error('Ocorreu um erro:', error);
         throw error;
+      })
+    );
+  }
+
+  getFeedersByCityAndNeighborhood(city: string, neighborhood?: string): Observable<Feeder[]> {
+    let params = new HttpParams().set('city', city);
+    if (neighborhood) {
+      params = params.set('neighborhood', neighborhood);
+    }
+    return this.http.get<{status: string, data: {feeders: Feeder[]}}>(`${this.baseUrl}/search`, { params }).pipe(
+      map(response => response.data.feeders),
+      catchError(error => {
+        throw new Error('Error fetching feeders by city and neighborhood');
+      })
+    );
+  }
+
+  getCities(): Observable<string[]> {
+    return this.http.get<{status: string, data: {cities: string[]}}>(`${this.baseUrl}/cities`).pipe(
+      map(response => response.data.cities),
+      catchError(error => {
+        throw new Error('Error fetching cities');
+      })
+    );
+  }
+
+  getNeighborhoodsByCity(city: string): Observable<string[]> {
+    return this.http.get<{status: string, data: {neighborhoods: string[]}}>(`${this.baseUrl}/neighborhoods/${city}`).pipe(
+      map(response => response.data.neighborhoods),
+      catchError(error => {
+        throw new Error('Error fetching neighborhoods');
       })
     );
   }

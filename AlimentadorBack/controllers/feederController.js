@@ -72,6 +72,44 @@ exports.getFeederById = async (req, res) => {
     }
 };
 
+exports.getFeedersByCityAndNeighborhood = async (req, res) => {
+    try {
+        const { city, neighborhood } = req.query;
+        let query = { 'address.city': city };
+        
+        if (neighborhood) {
+            query['address.neighborhood'] = neighborhood;
+        }
+
+        const feeders = await Feeder.find(query);
+        if (!feeders.length) {
+            return res.status(404).json({ status: 'fail', message: 'No feeders found matching the specified criteria' });
+        }
+        res.status(200).json({ status: 'success', data: { feeders } });
+    } catch (err) {
+        res.status(400).json({ status: 'fail', message: err.message });
+    }
+};
+
+exports.getCities = async (req, res) => {
+    try {
+        const cities = await Feeder.distinct("address.city");
+        res.status(200).json({ status: 'success', data: { cities } });
+    } catch (err) {
+        res.status(400).json({ status: 'fail', message: err.message });
+    }
+};
+
+exports.getNeighborhoodsByCity = async (req, res) => {
+    try {
+        const city = req.params.city;
+        const neighborhoods = await Feeder.find({ 'address.city': city }).distinct("address.neighborhood");
+        res.status(200).json({ status: 'success', data: { neighborhoods } });
+    } catch (err) {
+        res.status(400).json({ status: 'fail', message: err.message });
+    }
+};
+
 exports.updateFeeder = async (req, res) => {
     try {
         const { bowl, stock } = req.body;

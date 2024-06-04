@@ -1,6 +1,17 @@
 <div>
   <h1>Lista de Alimentadores</h1>
 
+  <div>
+    <select [(ngModel)]="selectedCity" (change)="onCitySelect(selectedCity!)">
+      <option [value]="null" disabled selected>Cidade</option>
+      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+    </select>
+    <select [(ngModel)]="selectedNeighborhood" (change)="onNeighborhoodSelect(selectedNeighborhood!)" *ngIf="neighborhoods.length">
+      <option [value]="null" disabled selected>Bairro</option>
+      <option *ngFor="let neighborhood of neighborhoods" [value]="neighborhood">{{ neighborhood }}</option>
+    </select>
+  </div>
+
   <div class="container">
     <div class="card" *ngFor="let feeder of feeders">
       <img src="../../../../assets/images/feeder.png" alt="feeder icon" class="feederImage">

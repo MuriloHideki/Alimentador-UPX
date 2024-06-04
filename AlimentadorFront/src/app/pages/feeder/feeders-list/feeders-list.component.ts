@@ -19,13 +19,35 @@ export class FeedersListComponent implements OnInit {
   ) { }
   @ViewChild('confirmDialog') confirmDialog!: ConfirmationDialogComponent;
 
+  cities: string[] = [];
+  neighborhoods: string[] = [];
+  selectedCity: string | null = null;
+  selectedNeighborhood: string | null = null;
   feeders: Feeder[] = [];
   currentFeederId: string | undefined;
 
-  ngOnInit(): void {
-    this.feederService.getAllFeeders().subscribe(response =>{
-      this.feeders = response.data.feeders;
-    })
+    ngOnInit(): void {
+    this.feederService.getCities().subscribe(cities => {
+      this.cities = cities;
+    });
+  }
+
+  onCitySelect(city: string): void {
+    this.selectedCity = city;
+    this.neighborhoods = [];
+    this.feederService.getNeighborhoodsByCity(city).subscribe(neighborhoods => {
+      this.neighborhoods = neighborhoods;
+    });
+  }
+
+  onNeighborhoodSelect(neighborhood: string): void {
+    this.selectedNeighborhood = neighborhood;
+    if(this.selectedCity){
+      this.feederService.getFeedersByCityAndNeighborhood(this.selectedCity, this.selectedNeighborhood).subscribe({
+        next: feeders => this.feeders = feeders,
+        error: error => console.error('Failed to fetch feeders:', error)
+      });
+    }
   }
 
   detail(id:string){
