@@ -1,7 +1,7 @@
 <div>
   <h1>Lista de Alimentadores</h1>
 
-  <div>
+  <div class="filter">
     <select [(ngModel)]="selectedCity" (change)="onCitySelect(selectedCity!)">
       <option [value]="null" disabled selected>Cidade</option>
       <option *ngFor="let city of cities" [value]="city">{{ city }}</option>

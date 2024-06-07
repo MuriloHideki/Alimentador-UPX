@@ -17,8 +17,8 @@ router.route('/feeders/:id')
     .put(feederController.updateFeeder)
     .delete(feederController.deleteFeeder);
 
-router.route('/feeders/:id/bowl-and-stock')
-    .put(feederController.updateBowlAndStockFeeder);
+router.route('/feeders/:id/bowl')
+    .put(feederController.updateBowl);
 
 router.route('/feeders/:id/history')
     .get(feederController.getHistoryByFeederId);

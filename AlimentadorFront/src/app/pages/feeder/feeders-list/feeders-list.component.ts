@@ -1,3 +1,4 @@
+import { FeederResponse } from './../../../classes/feeder-response';
 import { Feeder } from 'src/app/classes/feeder';
 import { FeederService } from './../../../services/feeder.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -5,6 +6,7 @@ import { Router } from '@angular/router';
 import { ConfirmationDialogComponent } from '../../aux/confirmation-dialog/confirmation-dialog.component';
 import { ModalService } from 'src/app/services/modal.service';
 import { Subscription } from 'rxjs';
+import { FeederData } from 'src/app/classes/feeder-data';
 
 @Component({
   selector: 'app-feeders-list',
@@ -27,14 +29,17 @@ export class FeedersListComponent implements OnInit {
   currentFeederId: string | undefined;
 
     ngOnInit(): void {
-    this.feederService.getCities().subscribe(cities => {
-      this.cities = cities;
-    });
+      this.feederService.getAllFeeders().subscribe(response =>{
+        this.feeders = response.data.feeders;
+      });
+      this.feederService.getCities().subscribe(cities => {
+        this.cities = cities;
+      });
   }
 
   onCitySelect(city: string): void {
     this.selectedCity = city;
-    this.neighborhoods = [];
+
     this.feederService.getNeighborhoodsByCity(city).subscribe(neighborhoods => {
       this.neighborhoods = neighborhoods;
     });

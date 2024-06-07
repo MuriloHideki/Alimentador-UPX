@@ -164,7 +164,7 @@ exports.deleteFeeder = async (req, res) => {
     }
 };
 
-exports.updateBowlAndStockFeeder = async (req, res) => {
+exports.updateBowl = async (req, res) => {
     try {
         let feeder = await Feeder.findById(req.params.id);
         if (!feeder) {
@@ -172,7 +172,7 @@ exports.updateBowlAndStockFeeder = async (req, res) => {
         }
 
         feeder.bowl = req.body.bowl;
-        feeder.stock = req.body.stock;
+        feeder.stock = feeder.stock;
         feeder.lastUpdateDate = new Date();
 
         await feeder.save();
